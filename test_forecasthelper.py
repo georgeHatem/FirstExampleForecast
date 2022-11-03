@@ -148,3 +148,22 @@ def test_forecast():
     assert (output[0].index == desired[0].index).all()
     assert type(output[1])== type(desired[1])
     assert output[1]._estimator_type == desired[1]._estimator_type
+
+def test_forecast_nocv():
+    inputParam = [pd.DataFrame({'Other': [1, 2, 3, 4, 5, 6]}, index=pd.Series([datetime(year=1970, month=1, day=1), datetime(year=1970, month=1, day=2), datetime(year=1970, month=1, day=3),
+                                                                                datetime(year=1970, month=1, day=4), datetime(year=1970, month=1, day=5), datetime(year=1970, month=1, day=6)], name='Date')),
+                    2,
+                    DecisionTreeRegressor(),
+                    None,
+                    'Other',
+                    pd.DataFrame(),
+                    pd.DataFrame({'Other_lead_1': [2, 3, 4, 5, 6, 4], 'Other_lead_2': [3, 4, 5, 6, 7, 5]}, index=pd.Series([datetime(year=1970, month=1, day=1), datetime(year=1970, month=1, day=2), datetime(year=1970, month=1, day=3),
+                                                                                datetime(year=1970, month=1, day=4), datetime(year=1970, month=1, day=5), datetime(year=1970, month=1, day=6)], name='Date'))]
+    
+    desired = [pd.DataFrame({'Other_0': [1, 2],'Other_1': [2, 3], 'Other_2': [3, 4]}, index=pd.Series([datetime(year=1970, month=1, day=7), datetime(year=1970, month=1, day=8)], name='Date')), RegressorChain(DecisionTreeRegressor())]
+
+    output = fh.forecast(*inputParam)
+    assert output[0].shape == desired[0].shape
+    assert (output[0].index == desired[0].index).all()
+    assert type(output[1])== type(desired[1])
+    assert output[1]._estimator_type == desired[1]._estimator_type
