@@ -4,7 +4,7 @@ Data in the 'Data' folder in the 'avocado.csv' file originates from Kaggle, wher
 
 Code and notebooks are licensed seperatly from the data in the 'Data' folder under the MIT license (see 'LICENSE.MIT.md' for details).
 
-Projet démontrant l'utilité dèun module accompaniateur à l'analyse de données.
+Projet démontrant l'utilité d'un module accompaniateur à l'analyse de données.
 
 Les données dans le fichier 'avocado.csv' dans le dossier 'Data' proviens de Kaggle, où sa à été compilé par Justin Kaggins à partir de données offertes par le Hass Avocado Board. Ces données sont licenciées sous le Open Data Commons Open Database License (ODbL) v1.0 (voir 'LICENSE.ODbL-v1.md' pour les détails).
 
